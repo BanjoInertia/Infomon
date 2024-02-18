@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { getPokemonGenerations } from "../../../../services/getPokemonAPI"
 import styled from "styled-components"
-import { size } from "../../../../data/variables"
+import { colors, size } from "../../../../data/variables"
 
-export const GenerationFilterButton = ({ onButtonClick }) => {
+export const GenerationFilterButtonForMovesTable = ({ onButtonClick }) => {
     const [generations, setGenerations] = useState([])
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export const GenerationFilterButton = ({ onButtonClick }) => {
     console.log(generations)
 
     return (
-        <ContainerGenerationFilterButton>
+        <ContainerGenerationFilterButton data-testid="generation-button">
             <TitleGenerationFilterButton>Moves Filter:</TitleGenerationFilterButton>
             <Select onChange={(event) => onButtonClick(event.target.value)}>
                 {generations.map((gen, index) => (
@@ -45,7 +45,7 @@ const TitleGenerationFilterButton = styled.h2`
 `
 
 const Select = styled.select`
-    background: #C2D9AD;
+    background: ${colors.primaryGreen};
     font-size: 20px;
     border: solid black 2px;
     cursor: pointer;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../../../data/variables";
 
 export const LoadMoreButton = ({ limit, pokemonType, setOffset, setLoadedPokemons }) => {
     
@@ -9,7 +10,7 @@ export const LoadMoreButton = ({ limit, pokemonType, setOffset, setLoadedPokemon
             : setLoadedPokemons(prev => prev + limit);
     }
 
-    return <Button onClick={loadMore}>Load More</Button>
+    return <Button data-testid="load-more-button" onClick={loadMore}>Load More</Button>
 }
 
 const Button = styled.button`
@@ -17,10 +18,11 @@ const Button = styled.button`
     padding: 7px 70px;
     border-radius: 5px;
     border: 2px solid black;
-    background: #A5CCC3;
+    background: ${colors.secondaryGreen};
     cursor: pointer;
 
     &:hover {
-        background-color: #487F72;
+        filter: brightness(70%);
+        color: white;
     }
 `

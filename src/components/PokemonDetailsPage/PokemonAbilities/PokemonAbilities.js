@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { size } from "../../../data/variables";
+import { colors, size } from "../../../data/variables";
 
 export const PokemonAbilities = ({ pokemonInfo }) => {
     const [pokemonAbilitiesInfo, setPokemonAbilitiesInfo] = useState([]);
 
     useEffect(() => {
         const fetchDataAbilities = async () => {
-            if (pokemonInfo.abilities && pokemonInfo.abilities.length > 0) {
+            if (pokemonInfo && pokemonInfo.abilities && pokemonInfo.abilities.length > 0) {
                 const abilitiesArray = [];
                 await Promise.all(pokemonInfo.abilities.map(async (ability) => {
                     const res = await fetch(ability.ability.url);
@@ -18,12 +18,12 @@ export const PokemonAbilities = ({ pokemonInfo }) => {
             }
         };
         fetchDataAbilities();
-    }, [pokemonInfo.abilities]);
+    }, [pokemonInfo]);
 
     return (
         <>
             <TitleAbilities>Abilities</TitleAbilities>
-            <ContainerAbilities>
+            <ContainerAbilities data-testid="pokemon-abilities">
                 {pokemonAbilitiesInfo.map((ability, index) => (
                     <li key={index}>
                         <AbilityName>{ability.name}</AbilityName>
@@ -39,6 +39,7 @@ export const PokemonAbilities = ({ pokemonInfo }) => {
     );
 };
 
+
 const ContainerAbilities = styled.ul`
     display: grid;
     grid-template-columns: 50% 50%;
@@ -50,14 +51,14 @@ const TitleAbilities = styled.h1`
     padding: 5px;
     font-size: 45px;
     font-family: 'PixeloidBold', sans-serif;
-    background: #7E936A;
+    background: ${colors.terciaryGreen};
 `
 
 const AbilityName = styled.h2`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #96AC81;
+    background: ${colors.fourthGreen};
     padding: 2px;
     border: solid black 3px;
 

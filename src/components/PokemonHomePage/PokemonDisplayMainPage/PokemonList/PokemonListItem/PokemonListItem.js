@@ -3,12 +3,12 @@ import styled from "styled-components"
 
 export const PokemonListItem = ({ id, name }) => {
     return (
-        <Link to={`/details/${id}`}>
-            <PokemonCard>
+        <PokemonCard data-testid="pokemon-list-item">
+            <Link to={`/details/${id}`}>
                 <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} alt='foto' />
                 <PokemonName>{name}</PokemonName>
-            </PokemonCard>
-        </Link>
+            </Link>
+        </PokemonCard>
     )
 }
 

@@ -5,7 +5,7 @@ import { TypeFilterButton } from "./pokemonListFilters/ListTypeFilterButton/List
 import { FilteredPokemonByName } from "./pokemonListFilters/ListFilteredPokemonByName/ListFilteredPokemonByName";
 import { PokemonSetter } from "./PokemonListSetter/PokemonSetter";
 import styled from "styled-components";
-import { size } from "../../../../data/variables";
+import { colors, size } from "../../../../data/variables";
 
 export const PokemonList = () => {
     const [pokemonType, setPokemonType] = useState('All');
@@ -34,7 +34,7 @@ export const PokemonList = () => {
 };
 
 const Filters = styled.div`
-    background: #467AAB;
+    background: ${colors.primaryBlue};
     padding: 10px;
     margin: 30px 0;
     display: flex;
@@ -57,7 +57,7 @@ const ContainerLista = styled.div`
     flex-direction: column;
     gap: 20px;
     margin: 0 11%;
-    background: #5690C6;
+    background: ${colors.primaryBlue};
     border-radius: 25px;
     padding: 20px 0;
 `

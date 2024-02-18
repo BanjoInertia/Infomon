@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { size } from "../../../../../../data/variables";
+import { colors, size } from "../../../../../../data/variables";
 
 export const PokemonSearchBar = ({ setSearchedPokemon }) => {
     let HandleSearchedPokemon = (event) => {
@@ -9,6 +9,7 @@ export const PokemonSearchBar = ({ setSearchedPokemon }) => {
 
     return (
         <SearchBar
+            data-testid="pokemon-search-bar"
             size={50}
             type="text"
             id="searchPoke"
@@ -24,7 +25,7 @@ const SearchBar = styled.input`
     font-size: 25px;
     padding: 5px;
     border: none;
-    background-color: #C2D9AD;
+    background-color: ${colors.primaryGreen};
     color: black;
     border: solid black 2px;
     &::placeholder {

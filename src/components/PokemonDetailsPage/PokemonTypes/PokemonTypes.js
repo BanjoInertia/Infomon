@@ -4,7 +4,7 @@ import { size } from "../../../data/variables"
 
 export const PokemonTypes = ({ pokemonInfo }) => {
     return (
-        <Types>
+        <Types data-testid="pokemon-types">
             {
                 pokemonInfo.types?.map((type, index) => (
                     <Type key={index} name={type.type.name}>{type.type.name}</Type>

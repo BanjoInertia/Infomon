@@ -1,11 +1,11 @@
 import styled from "styled-components"
-import { size } from "../../../data/variables"
+import { colors, size } from "../../../data/variables"
 
 export const RenderPokemonMoveTable = ({learnMethod, pokeInfo, selectedGeneration, pokemonMovesInfo}) => {
     return (
         <>
             <LearnMethodTitle>{learnMethod}</LearnMethodTitle> 
-            <Table>
+            <Table data-testid="pokemon-moves-table">
                 <thead>
                     <tr>
                         <MovesTableHeaders>Lv.</MovesTableHeaders>
@@ -44,7 +44,7 @@ export const RenderPokemonMoveTable = ({learnMethod, pokeInfo, selectedGeneratio
 
 const LearnMethodTitle = styled.h1`
     font-family: 'PixeloidBold', sans-serif;
-    background-color: #7E936A;
+    background-color: ${colors.terciaryGreen};
     font-size: 30px;
     padding: 5px 0;
 `
@@ -53,13 +53,13 @@ const Table = styled.table`
     width: 100%;
     margin: 1px;
     border-collapse: collapse;
-    border-bottom: solid #7E936A 2px;
+    border-bottom: solid ${colors.terciaryGreen} 2px;
 `
 
 const MovesTableHeaders = styled.th`
-    background-color: #96AC81;
-    border-bottom: solid #7E936A 2px;
-    border-right: solid #7E936A 2px;
+    background-color: ${colors.fourthGreen};
+    border-bottom: solid ${colors.terciaryGreen} 2px;
+    border-right: solid ${colors.terciaryGreen} 2px;
 
     @media (min-width: ${size.mobileL}) {
         padding: 12px 0;
@@ -71,12 +71,12 @@ const MovesTableHeaders = styled.th`
 `
 
 const MovesTableRows = styled.tr`
-    background-color: #C2D9AD;
+    background-color: ${colors.primaryGreen};
     &:nth-child(even){background-color: #A6BB93;}
 `
 
 const MovesTableData = styled.td`
-    border-right: solid #7E936A 2px;
+    border-right: solid ${colors.terciaryGreen} 2px;
     
     @media (min-width: ${size.mobileL}) {
         font-size: 18px;

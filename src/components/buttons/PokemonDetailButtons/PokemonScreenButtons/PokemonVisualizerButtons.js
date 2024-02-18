@@ -1,9 +1,9 @@
-import styled from "styled-components"
 import { ChangePokemonButton } from "./ChangePokemonButton/ChangePokemonButton";
 import { ChangePokemonImageButton } from "./ChangePokemonImageButton/ChangePokemonImageButton";
+import styled from "styled-components"
 import { size } from "../../../../data/variables";
 
-export const PokemonScreenButtons = ({ id, pokemonImage, setPokemonImage }) => {
+export const PokemonVisualizerButtons = ({ id, pokemonImage, setPokemonImage }) => {
     const pokemonId = parseInt(id);
 
     const previousId = pokemonId - 1;

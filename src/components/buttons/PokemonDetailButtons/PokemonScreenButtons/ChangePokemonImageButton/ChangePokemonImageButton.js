@@ -9,14 +9,14 @@ export const ChangePokemonImageButton = ({ pokemonImage, setPokemonImage }) => {
     }
 
     return (
-        <Button>
+        <ContainerButton data-testid="change-poke-image-button">
             <Label>Shiny</Label>
             <ChangeImageButton onClick={ChangePokemonImage} />
-        </Button>
+        </ContainerButton>
     )
 }
 
-const Button = styled.div`
+const ContainerButton = styled.div`
     display: flex;
     flex-direction: column;
     
@@ -31,7 +31,6 @@ const Button = styled.div`
 
 const Label = styled.label`
     font-family: 'PixeloidBold', sans-serif;
-    
 `
 
 const ChangeImageButton = styled.button`

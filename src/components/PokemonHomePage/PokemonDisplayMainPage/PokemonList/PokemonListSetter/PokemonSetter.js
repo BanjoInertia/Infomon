@@ -39,7 +39,7 @@ export const PokemonSetter = ({ offset, loadedPokemons, pokemonType, limit, sear
 
     return (
         <>
-            <ListaPokemon>
+            <ListaPokemon data-testid="pokemon-setter">
                 {pokemon.map((poke, index) => (
                     <PokemonListItem key={index} id={poke.id} name={poke.name} />
                 ))}

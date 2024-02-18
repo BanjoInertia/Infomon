@@ -11,3 +11,16 @@ export const size = {
     desktop: '1920px',
     desktopL: '2560px',
 }
+
+export const colors = {
+    // Home Page
+    primaryBlue: '#5690C6',
+    secondaryBlue: '#467AAB',
+
+    primaryGreen: '#C2D9AD',
+    secondaryGreen: '#A5CCC3',
+
+    // Details Page
+    terciaryGreen: '#7E936A',
+    fourthGreen: '#96AC81',
+}

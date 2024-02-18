@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { size } from "../../../data/variables"
 
-export const PokemonDetailsImg = ({ pokemonInfo, pokemonImage }) => {
+export const PokemonDetailsImage = ({ pokemonInfo, pokemonImage }) => {
     let image = ''
 
     if (pokemonImage === 'default') {
@@ -11,7 +11,7 @@ export const PokemonDetailsImg = ({ pokemonInfo, pokemonImage }) => {
     }
 
     return (
-        <Img src={image} alt={`${pokemonInfo.name}`}/>
+        <Img data-testid="pokemon-details-image" src={image} alt={`${pokemonInfo.name}`}/>
     )
 }
 

@@ -1,4 +1,3 @@
-import './App.css';
 import { AppRoutes } from './pages/routes';
 import { createGlobalStyle } from 'styled-components';
 import PixeloidSans from './fonts/PixeloidSans-mLxMm.ttf';

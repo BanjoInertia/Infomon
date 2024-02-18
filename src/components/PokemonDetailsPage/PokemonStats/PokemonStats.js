@@ -1,16 +1,16 @@
 import styled from "styled-components"
 import { StatColors } from "./statColors"
-import { size } from "../../../data/variables"
+import { colors, size } from "../../../data/variables"
 
 export const PokemonStats = ({ pokemonInfo }) => {
     return (
-        <ul>
+        <ul data-testid="pokemon-stats">
             {
                 pokemonInfo.stats?.map((pokeStat, index) => (
-                    <Stats>
+                    <Stats key={index}>
                         <ContainerStats>
-                            <Stat key={index}>{pokeStat.stat.name}:</Stat>
-                            <BaseStat for={pokeStat.stat.name}>{pokeStat.base_stat}</BaseStat>
+                            <Stat>{pokeStat.stat.name}:</Stat>
+                            <BaseStat htmlFor={pokeStat.stat.name}>{pokeStat.base_stat}</BaseStat>
                         </ContainerStats>
                         <StatsBarContainer>
                             <ProgressBar name={pokeStat.stat.name} width={(pokeStat.base_stat / 100) * 100} />
@@ -71,7 +71,7 @@ const Stat = styled.li`
 `
 
 const StatsBarContainer = styled.div`
-    background: #C2D9AD;
+    background: ${colors.primaryGreen};
     outline: 3px solid black;
 
     @media (min-width: ${size.mobileL}) {

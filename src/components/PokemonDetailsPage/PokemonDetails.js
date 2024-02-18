@@ -1,14 +1,14 @@
 import { Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getPokemonDetails } from "../../services/getPokemonAPI"
-import { GenerationFilterButton } from "../buttons/PokemonDetailButtons/GenerationFilterButtonForMovesTable/GenerationFilterButtonForMovesTable"
-import { PokemonScreenButtons } from "../buttons/PokemonDetailButtons/PokemonScreenButtons/PokemonScreenButtons"
+import { GenerationFilterButtonForMovesTable } from "../buttons/PokemonDetailButtons/GenerationFilterButtonForMovesTable/GenerationFilterButtonForMovesTable"
+import { PokemonVisualizerButtons } from "../buttons/PokemonDetailButtons/PokemonScreenButtons/PokemonVisualizerButtons"
 import { PokemonAbilities } from "./PokemonAbilities/PokemonAbilities"
-import { PokemonDetailsImg } from "./PokemonImage/PokemonImage"
+import { PokemonDetailsImage } from "./PokemonDetailsImage/PokemonDetailsImage"
 import { PokemonMoves } from "./PokemonMoves/PokemonMoves"
 import { PokemonStats } from "./PokemonStats/PokemonStats"
 import { PokemonTypes } from "./PokemonTypes/PokemonTypes"
-import { size } from "../../data/variables"
+import { colors, size } from "../../data/variables"
 import img from "../../assets/Background.png"
 import styled from "styled-components"
 
@@ -29,33 +29,72 @@ export const PokemonDetails = () => {
     }, [id]);
     
     return (
-        <PokemonInfo>
-            <PokemonDisplay>
-                <Link to={'/'}><BackButton>Home</BackButton></Link>
-                <PokemonJoao>
-                    <PokemonScreen>
-                        <PokemonDetailsImg pokemonInfo={pokemonInfo} pokemonImage={pokemonImage} />
+        <PokemonInfoContainer>
+            <PokemonDisplayContainer>
+                <Link to={'/'}><HomeButton>Home</HomeButton></Link>
+                <PokemonDisplay>
+                    <PokemonVisualizer>
+                        <PokemonDetailsImage pokemonInfo={pokemonInfo} pokemonImage={pokemonImage} />
                         <PokemonName>{pokemonInfo.name}</PokemonName>
-                    </PokemonScreen>
-                    <PokemonScreenButtons id={id} pokemonImage={pokemonImage} setPokemonImage={setPokemonImage} />    
-                </PokemonJoao>
-            </PokemonDisplay>
-            <Jofe>
+                    </PokemonVisualizer>
+                    <PokemonVisualizerButtons id={id} pokemonImage={pokemonImage} setPokemonImage={setPokemonImage} />    
+                </PokemonDisplay>
+            </PokemonDisplayContainer>
+            <PokemonPropertiesContainer>
                 <StatsScreen>
                     <PokemonStats pokemonInfo={pokemonInfo} />
                     <PokemonTypes pokemonInfo={pokemonInfo} />
                 </StatsScreen>
-                <GenerationFilterButton onButtonClick={setSelectedGeneration} />    
+                <GenerationFilterButtonForMovesTable onButtonClick={setSelectedGeneration} />    
                 <AttacksScreen>
                     <PokemonAbilities pokemonInfo={pokemonInfo} />
                     <PokemonMoves pokemonInfo={pokemonInfo} selectedGeneration={selectedGeneration} />
                 </AttacksScreen>
-            </Jofe>
-        </PokemonInfo>
+            </PokemonPropertiesContainer>
+        </PokemonInfoContainer>
     )
 }
 
-const BackButton = styled.button`
+const PokemonInfoContainer = styled.section`
+    width: 100vw;
+    display: flex;
+    
+    @media (min-width: ${size.mobileL}) {
+        height: 2000px;
+        flex-direction: column;
+        padding: 1em;
+    }
+
+    @media (min-width: ${size.laptopL}) {
+        height: 100vh;
+        flex-direction: row;
+        padding: 2em;
+    }
+`
+
+const PokemonDisplayContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: ${size.mobileL}) {
+        width: 100%;
+        height: 600px;
+    }
+
+    @media (min-width: ${size.tablet}) {
+        width: 100%;
+        height: 700px;
+    }
+
+    @media (min-width: ${size.laptopL}) {
+        width: 50%;
+        height: 100%;
+    }
+`
+
+const HomeButton = styled.button`
     background: #4FD;
     position: absolute;
     top: 30px;
@@ -73,10 +112,9 @@ const BackButton = styled.button`
     }
 `
 
-const PokemonJoao = styled.div`    
+const PokemonDisplay = styled.div`    
     background-image: url(${img});
     background-repeat: no-repeat;
-    
     background-position: center;
     display: flex;
     flex-direction: column;
@@ -101,18 +139,8 @@ const PokemonJoao = styled.div`
     }
 `
 
-const PokemonName = styled.div`
-    @media (min-width: ${size.mobileL}) {
-        font-size: 2em;
-    }
-
-    @media (min-width: ${size.laptopL}) {
-        font-size: 3em;
-    }
-`
-
-const PokemonScreen = styled.div`
-    background: #C2D9AD;
+const PokemonVisualizer = styled.div`
+    background: ${colors.primaryGreen};
     border-radius: 35px;
     border: solid black 3px;
 
@@ -138,37 +166,25 @@ const PokemonScreen = styled.div`
     }
 `
 
-const PokemonInfo = styled.section`
-    width: 100vw;
-    display: flex;
-    
+const PokemonName = styled.div`
     @media (min-width: ${size.mobileL}) {
-        height: 2000px;
-        flex-direction: column;
-        padding: 1em;
+        font-size: 2em;
     }
 
     @media (min-width: ${size.laptopL}) {
-        height: 100vh;
-        flex-direction: row;
-        padding: 2em;
+        font-size: 3em;
     }
 `
 
-const PokemonDisplay = styled.div`
+const PokemonPropertiesContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: space-around;
 
     @media (min-width: ${size.mobileL}) {
         width: 100%;
-        height: 600px;
-    }
-
-    @media (min-width: ${size.tablet}) {
-        width: 100%;
-        height: 700px;
+        height: 1300px;
     }
 
     @media (min-width: ${size.laptopL}) {
@@ -178,7 +194,7 @@ const PokemonDisplay = styled.div`
 `
 
 const StatsScreen = styled.div`
-    background: #C2D9AD;
+    background: ${colors.primaryGreen};
     border: solid black 3px;
     border-radius: 35px;
     display: flex;
@@ -199,7 +215,7 @@ const StatsScreen = styled.div`
 `
 
 const AttacksScreen = styled.div`
-    background: #C2D9AD;
+    background: ${colors.primaryGreen};
     border: solid black 3px;
     border-radius: 35px 0 0 35px;
     text-align: center;
@@ -212,22 +228,5 @@ const AttacksScreen = styled.div`
     @media (min-width: ${size.laptopL}) {
         width: 88%;
         height: 40%;
-    }
-`
-
-const Jofe = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-
-    @media (min-width: ${size.mobileL}) {
-        width: 100%;
-        height: 1300px;
-    }
-
-    @media (min-width: ${size.laptopL}) {
-        width: 50%;
-        height: 100%;
     }
 `

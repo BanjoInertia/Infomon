@@ -3,6 +3,7 @@ import { getPokemonAPI } from "../../../../../../services/getPokemonAPI"
 import { PokemonListItem } from "../../PokemonListItem/PokemonListItem";
 import { extractId } from "../../../../../PokemonExtractId/extractId";
 import styled from "styled-components";
+import { colors } from "../../../../../../data/variables";
 
 export const FilteredPokemonByName = ({ searchedPokemon }) => {
     const [filteredPokemonData, setFilteredPokemonData] = useState([])
@@ -28,7 +29,7 @@ export const FilteredPokemonByName = ({ searchedPokemon }) => {
 
     return (
         showContainer && (
-            <ContainerSearchBar>
+            <ContainerSearchBar data-testid="filtered-pokemon">
                 {searchedPokemon && filteredData.length === 0 ? (
                     <h2>Pokemon not found, please enter a valid name.</h2>
                 ) : (
@@ -49,7 +50,7 @@ const ContainerSearchBar = styled.div`
     flex-direction: column;
     gap: 20px;
     margin: 0 11%;
-    background: #5690C6;
+    background: ${colors.primaryBlue};
     border-radius: 25px;
     padding: 20px 0;
     margin-bottom: 50px;

@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { RenderPokemonMoveTable } from "../PokemonMovesTable/PokemonMovesTable";
 import styled from "styled-components";
+import { colors } from "../../../data/variables";
 
 export const PokemonMoves = ({ pokemonInfo, selectedGeneration }) => {
     const [pokemonMovesInfo, setPokemonMovesInfo] = useState([])
 
     useEffect(() => {
         const fetchDataMoves = async () => {
-            if (pokemonInfo.moves && pokemonInfo.moves.length > 0) {
+            if (pokemonInfo && pokemonInfo.moves && pokemonInfo.moves.length > 0) {
                 const movesArray = [];
                 
                 for (const move of pokemonInfo.moves) {  
@@ -28,13 +29,13 @@ export const PokemonMoves = ({ pokemonInfo, selectedGeneration }) => {
             }
         };
         fetchDataMoves();
-    }, [pokemonInfo.moves, selectedGeneration]);
+    }, [pokemonInfo, selectedGeneration]);
 
     console.log(pokemonMovesInfo)
-    console.log(pokemonInfo.moves)
+    console.log(pokemonInfo)
 
     return (
-        <div>
+        <div data-testid="pokemon-moves">
             <TitleMoves>Moves</TitleMoves>
             {['level-up', 'machine', 'tutor'].map((learnMethod) => (
                 <RenderPokemonMoveTable
@@ -54,6 +55,6 @@ const TitleMoves = styled.h1`
     padding: 5px;
     font-size: 45px;
     font-family: 'PixeloidBold', sans-serif;
-    background: #7E936A;
+    background: ${colors.terciaryGreen};
     border-bottom: 3px black solid;
 `

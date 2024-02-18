@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getPokemonTypes } from "../../../../../../services/getPokemonAPI";
 import styled from "styled-components";
 import { TypeColors } from "../../../../../PokemonDetailsPage/PokemonTypes/typeColors";
-import { size } from "../../../../../../data/variables";
+import { colors, size } from "../../../../../../data/variables";
 
 export const TypeFilterButton = ({ onChange, onTypeChange }) => {
     const [types, setTypes] = useState([]);
@@ -30,7 +30,7 @@ export const TypeFilterButton = ({ onChange, onTypeChange }) => {
     };
 
     return (
-        <TypeFilters>
+        <TypeFilters data-testid="type-filter-button">
             <Select value={selectedType} onChange={(event) => handleTypeChange(event.target.value)}>
                 <Option value={'All'}>All</Option>
                 {types.slice(0, types.length - 2).map((type, index) => (
@@ -50,7 +50,7 @@ const TypeFilters = styled.div`
 `
 
 const Select = styled.select`
-    background: #C2D9AD;
+    background: ${colors.primaryGreen};
     font-size: 30px;
     border: solid black 2px;
     cursor: pointer;

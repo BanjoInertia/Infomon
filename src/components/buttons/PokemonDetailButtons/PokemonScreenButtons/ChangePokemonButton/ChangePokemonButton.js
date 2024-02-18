@@ -1,17 +1,16 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-import { size } from "../../../../../data/variables"
 
 export const ChangePokemonButton = ({ id, position }) => {
     return (
-        <Button>
+        <ContainerButton data-testid="change-poke-visualizer-button">
             <Label>{position}</Label>
             <Link to={`/details/${id}`}><ChangeButton /></Link>
-        </Button>
+        </ContainerButton>
     )
 }
 
-const Button = styled.div`
+const ContainerButton = styled.div`
     display: flex;
     flex-direction: column;
 `
