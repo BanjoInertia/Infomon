@@ -29,7 +29,7 @@ Todos os Pokémons possuem uma página com suas propriedades disponibilizadas de
 A lista de Pokémons é uma das principais funções do site, onde o usuário pode clicar em qualquer Pokémon para ser redirecionado a página de detalhes, além de uma funcionalidade de expandir a lista com novos Pokémons.
 
 <h1 align="left">
-  <img width="900px" src="https://imgur.com/44IuqMT.gif" alt="Gif Lista de Pokémons>
+  <img width="900px" src="https://imgur.com/44IuqMT.gif" alt="Gif Lista de Pokémons" />
 </h1>
 
 <br>
